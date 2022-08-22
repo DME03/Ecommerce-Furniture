@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,3 +134,5 @@ MEDIA_URL = '/media/'
 if DEBUG:
     STRIPE_PUBLISHABLE_KEY = 'pk_test_51KzyZtSHpDilL7f1b9VsD7b5Gx45UwnNBNrKTLKT9cFd57hpGERP6TgEplZ355e7Qa7yPnrrLQNDDytLjysHBSli00g33XK9SW   '
     STRIPE_SECRET_KEY = 'sk_test_51KzyZtSHpDilL7f1dm1n2rhyniv31c4UvjMcyEoqzffvBEwAIW8EubKov3FiM9x4LBE47iVvn6cFPaLV3jbAyuak00CGOE39D1'
+
+django_heroku.settings(locals())
