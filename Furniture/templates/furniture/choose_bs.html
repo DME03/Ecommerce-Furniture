@@ -1,0 +1,17 @@
+{% extends 'furniture/base.html' %}
+{% block title %}
+<title>Buyer/Seller</title> 
+{% endblock title %}
+{% block content %}
+    <b><h1>Welcome To D&M FURNITURE</h1></b>
+    <h2>We wish giving you the best experience.</h2>
+    <hr>
+    <h3>I'm a</h3>
+
+    <button onclick="location.href='{% url 'buy_reg' %}'">&nbsp;&nbsp;&nbsp;&nbsp;Buyer&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <b>OR</b> 
+    <button onclick="location.href='{% url 'sel_reg' %}'">&nbsp;&nbsp;&nbsp;&nbsp;Seller&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <br>
+    <br>
+{% endblock content %}
+

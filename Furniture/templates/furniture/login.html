@@ -1,0 +1,49 @@
+{% extends 'furniture/base.html' %}
+{% block title %}
+<title>Log in</title>
+
+{% endblock title %}
+
+{% block content %}
+
+<button onclick="location.href='{% url 'buy_reg'%}'">&nbsp;&nbsp;&nbsp;&nbsp;Register as Buyer&nbsp;&nbsp;&nbsp;&nbsp;</button>
+<hr>
+OR
+<hr>
+<button onclick="location.href='{% url 'sel_reg'%}'">&nbsp;&nbsp;&nbsp;&nbsp;Register as Seller&nbsp;&nbsp;&nbsp;&nbsp;</button>
+<br>
+<br> 
+<h4>OR</h4>
+<br>
+<form action="" method="POST">
+    </h4>
+    {% if messages %}
+    {% for message in messages %}
+    <span {% if messages.tags %} class="{{messages.tags}}" {% endif %}>{{message}}</span>
+    {% endfor %}
+    {% endif %}
+    </h4>
+    {% csrf_token %}
+    {{form.as_p}}
+    
+    {% comment %} <input type="submit" value="Log In" > {% endcomment %}
+
+    <head>
+        <style>
+          input[type=button],
+          input[type=submit] {
+            background-color: #02ECAC;
+            border: none;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+          }
+        </style>
+      </head>
+
+    <input type="submit" value="Log In">
+
+</form>
+{% endblock content %}

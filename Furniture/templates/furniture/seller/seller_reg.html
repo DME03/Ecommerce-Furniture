@@ -1,0 +1,115 @@
+{% extends 'furniture/base.html' %}
+{% block title %}
+<title>Register</title>
+{% endblock title %}
+{% block content %}
+<button onclick="location.href='{% url 'log'%}'">&nbsp;&nbsp;&nbsp;&nbsp;Log In&nbsp;&nbsp;&nbsp;&nbsp;</button>
+<br>
+<br> 
+<h4>OR</h4>
+<br>
+
+<h1>Seller Registration Form</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <h4>
+        Selling Item:
+    </h4>
+    <hr>
+    Plaster
+    <input type="checkbox" name="selling_item[]" value="Plaster"
+    style="width: 5%;
+    border: none;
+    height: 20px;
+    margin-bottom: 2px;
+    padding-left: 5px"; >
+
+    Table
+    <input type="checkbox" name="selling_item[]" value="Table" 
+    style="width: 5%;
+    border: none;
+    height: 20px;
+    margin-bottom: 2px;
+    padding-left: 5px";>
+
+    Windows/Door
+    <input type="checkbox" name="selling_item[]" value="Windows/Door"
+    style="width: 5%;
+    border: none;
+    height: 20px;
+    margin-bottom: 2px;
+    padding-right: 15px";>
+
+    Chair
+    <input type="checkbox" name="selling_item[]" value="Chair"
+    style="width: 5%;
+    border: none;
+    height: 20px;
+    margin-bottom: 2px;
+    padding-left: 5px";>
+
+    Genuine Wood
+    <input type="checkbox" name="selling_item[]" value="Genuine_Wood"
+    style="width: 5%;
+    border: none;
+    height: 20px;
+    margin-bottom: 2px;
+    padding-left: 5px";>
+    <br>
+    <br>
+    <br>
+
+
+    <h4>Fulfilled by:</h4>
+    <input type="radio" id="D&M Co." name="fulfilled_by" value="D&M Co."
+    style="width: 7%;
+    border: none;
+    height: 20px;
+    margin-bottom: 2px;
+    padding-left: 5px";
+    checked>
+    <label for="D&M Co.">D&M Co.</label><br>
+    
+    <input type="radio" id="Merchant" name="fulfilled_by" value="Merchant"
+    style="width: 7%;
+    border: none;
+    height: 20px;
+    margin-bottom: 2px;
+    padding-left: 5px";>
+    <label for="Merchant">Merchant</label><br>
+    <br>
+
+    {{seller_form.as_p}}
+    <br>
+
+    <input type="checkbox" required name="agree" checked 
+    value="Agree"
+    style="width: 7%;
+    border: none;
+    height: 20px;
+    margin-bottom: 2px;
+    padding-left: 5px";>
+    I agree all Terms&Conditions of D&M CLOTHING
+    <br>
+    <br>
+
+    {% comment %} <a href="success/"></a> {% endcomment %}
+    <head>
+        <title>Title of the document</title>
+        <style>
+          input[type=button],
+          input[type=submit] {
+            background-color: #02ECAC;
+            padding: 15px 30px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+          }
+        </style>
+      </head>
+
+    <input type="submit" value="Register">
+
+</form>
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends 'furniture/base.html' %}
+{% load static %}
+{% block title %}
+<title>Contact</title>
+{% endblock title %}
+
+{% block content %}
+      <div class="col-md-7"> 
+              <h2>
+                Contact Us
+              </h2>
+            </div>
+            <form action="{% url 'con_sub'%}" method="POST">
+              {% csrf_token %}
+              <div>
+                <input type="text" name="user_name" placeholder="Your Name" />
+              </div>
+              <div>
+                <input type="text" name="phone_number" required placeholder="Phone Number" />
+              </div>
+              <div>
+                <input type="email" name="user_email" required placeholder="Email" />
+              </div>
+              <div>
+                <input type="text" name="user_message" required class="message-box" placeholder="Message" />
+              </div>
+              <div class="btn_box">
+                <button>  
+                  SEND
+                </button>
+                <br>
+                </h4>
+                  </style>
+                  {% if messages %}
+                  {% for message in messages %}
+                  <span {% if messages.tags %} class="{{messages.tags}}" {% endif %}>{{message}}</span>
+                  {% endfor %}
+                  {% endif %}
+              </h4>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+        <div class="map_container">
+    <div class="map">
+  <div id="googleMap"></div>
+  {% endblock content %}

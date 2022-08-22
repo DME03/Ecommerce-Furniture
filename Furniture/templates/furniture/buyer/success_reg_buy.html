@@ -1,0 +1,15 @@
+{% extends 'furniture/base.html' %}
+{% block title %}
+<title>Success</title>
+{% endblock title %}
+
+{% block content %}
+    <h1>{{firstnm}}, Your Registration was successfully completed.</h1>
+
+    <hr>
+    <h4>   
+        <button onclick="location.href='{% url 'buyer_home' %}'">
+        &nbsp;&nbsp;&nbsp;&nbsp;Log In&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </h4>
+
+{% endblock content %}

@@ -1,0 +1,89 @@
+{% extends 'furniture/base.html' %}
+{% block title %}
+<title>Buyer Registration</title> 
+{% endblock title %}
+
+{% block content %}
+
+<button onclick="location.href='{% url 'log'%}'">&nbsp;&nbsp;&nbsp;&nbsp;Log In&nbsp;&nbsp;&nbsp;&nbsp;</button>
+<br>
+<br> 
+<h4>OR</h4>
+<br>
+
+<h1>Buyer Registration Form</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <h4>
+        Choice of interest:
+    </h4>
+    <hr>
+    Sofa Chair
+    <input type="checkbox" name="interest[]" value="Sofa Chair"
+    style="width: 7%;
+    border: none;
+    height: 20px;
+    margin-bottom: 2px;
+    padding-left: 5px"; >
+
+    KHAKI TABLE
+    <input type="checkbox" name="interest[]" value="KHAKI TABLE" 
+    style="width: 7%;
+    border: none;
+    height: 20px;
+    margin-bottom: 2px;
+    padding-left: 5px";>
+
+    PREMIUM ROLLER CHAIR 
+    <input type="checkbox" name="interest[]" value="PREMIUM ROLLER CHAIR"
+    style="width: 7%;
+    border: none;
+    height: 20px;
+    margin-bottom: 2px;
+    padding-left: 5px";>
+
+    HOUSE CHAIR
+    <input type="checkbox" name="interest[]" value="HOUSE CHAIR"
+    style="width: 7%;
+    border: none;
+    height: 20px;
+    margin-bottom: 2px;
+    padding-left: 5px";>
+    <br>
+    <br>
+
+    {{buyer_form.as_p}}
+    <br>
+
+    <input type="checkbox" required name="agree" checked 
+    value="Agree"
+    style="width: 7%;
+    border: none;
+    height: 20px;
+    margin-bottom: 2px;
+    padding-left: 5px";>
+    I agree all Terms&Conditions of D&M CLOTHING
+    <br>
+    <br>
+
+    {% comment %} <a href="success/"></a> {% endcomment %}
+    <head>
+        <title>Title of the document</title>
+        <style>
+          input[type=button],
+          input[type=submit] {
+            background-color: #02ECAC;
+            padding: 15px 30px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+          }
+        </style>
+      </head>
+
+    <input type="submit" value="Register">
+
+</form>
+
+{% endblock content%}

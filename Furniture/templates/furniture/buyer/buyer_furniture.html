@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="/furniture/images/fevicon.png" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  {% block title %}
+  <title>Seller</title>
+  {% endblock title %}
+
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'furniture/css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+
+  <!-- font awesome style -->
+  <link href="{% static 'furniture/css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'furniture/css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'furniture/css/responsive.css' %}" rel="stylesheet" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#div_obj*").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  </script>
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section long_section px-0">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand {{buyer_home}}" href="{% url 'buyer_home' %}">
+          <span>
+            D&M FURNITURE
+          </span>
+        </a>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+            <ul class="navbar-nav ">
+              <div class="quote_btn-container">
+                {% block content %}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    All
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item {{b_furni}}"  href="{% url 'b_furni' %}">All</a>
+                  {% for category in categories %}
+                  <a class="dropdown-item {{category}}"  href="/category/{{category.id}}/{{category.name}}">{{category.name}}</a>
+                  {% endfor %}
+
+                </div>
+                </li>
+                {% endblock content %}
+
+              <li class="nav-item active">
+                <a class="nav-link {{buyer_home}}" href="{% url 'buyer_home' %}">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{b_furni}}" href="{% url 'b_furni'%}">Furnitures</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{b_contact}}" href="{% url 'b_contact'%}" >Contact Us</a>
+              </li>
+              {% block cart %}
+              {% if cnt > 0 %}
+              <li class="nav-item">
+                <a style="color:blue;" class="nav-link {{b_cart}}" href="{% url 'b_cart'%}" >My Cart ({{cnt}}) </a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link {{b_cart}}" href="{% url 'b_cart'%}" >My Cart</a>
+              </li>
+              {% endif %}
+              {% endblock cart %}
+            </div>
+          </a>
+        </ul>
+      </div>
+
+          <div class="quote_btn-container">
+                  <li class="dropdown">
+                    <a href="#"
+                       data-toggle="dropdown" 
+                       class="dropdown">
+                       
+                       &nbsp;👤&nbsp;{{firstnm}}&nbsp;&nbsp;&nbsp;
+                      <b class="fa fa-caret-down"></b>
+                  </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'b_cart'%}">&nbsp;&nbsp;&nbsp;&nbsp;My Cart</a></li>
+                        <hr>
+                        <li><a 
+                          onclick="return confirm('Adding account will log you out. Are you sure? ')" 
+                          href="{% url 'choose_bs'%}">&nbsp;&nbsp;&nbsp;&nbsp;Add Account</a></li>
+                        <hr>
+                          {% if user.is_authenticated %}
+                            <li><a onclick="return confirm('Are you sure you want to log out? ')" href="{% url 'oklogout' %}">&nbsp;&nbsp;&nbsp;&nbsp;Log out</a></li>
+                          {% endif %}
+                      </ul>
+                </li>
+            </ul>
+            <hr>
+            </div>
+            
+            </a>
+          </div>
+          <ul class="nav">
+            <form action="{% url 'search' %}" method="POST" class="form-inline my-2 my-lg-0 ">
+              {% csrf_token %}
+              <input class="form-control mr-sm-2"  type="search" placeholder="Search.." name="search" id="myInput" aria-label="Search" >
+              <button class="btn  my-2 my-sm-0 nav_search-btn">
+                <i class="fa fa-search  btn-outline-info" aria-hidden="true"></i> 
+              </button>              
+              </form>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- end header section -->
+  </div>
+
+
+
+  {% comment %} /\\\\\\\\\\\\\\\\\\\\\\/\/\/\/\\//\/\/\\/\/\/\/\\/\/\/\/\/\\/\/\/\/\/\/\\//\/\\/\/\/\/\/\/\/\\/\/\/\/\/\\/\/\/\/\/\/\/\/\/\/\\/\/\/\/\/\/\/\/\ {% endcomment %}
+
+
+
+
+  {% csrf_token %}
+  <section class="contact_section  long_section">
+    <div class="container">
+      <div class="row">
+          <div class="form_container">
+            <div class="heading_container">
+
+{% block list_item %}
+  <section class="furniture_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Our Premium Furniture
+        </h2>
+        <p>
+          which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't an
+        </p>
+      </div>
+      <div id="div_main" class="row">
+      {% for post in page_obj %}
+            <div id="div_obj" class="col-md-6 col-lg-4">
+            <div id="div_item" class="box">
+              {% comment %} {% if post.Category == 'A' %} {% endcomment %}
+                <div class="img-box"> 
+                  <img src= "{{post.furniture_image.url}}" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    {{post.title}}
+                  </h5>
+                  <div class="price_box">
+                    <h6 class="price_heading">
+                      <span>$</span> {{post.price}}
+                    </h6>
+                    {% block qty %}
+                    {% for i in all_items %}
+                    {% if i.item_selected.title == post.title %}
+                      <h6 style="color: green">Qty: {{i.quantity}}</h6>
+                    {% endif %}
+                    {% endfor %}
+                    {% endblock qty %}
+                      <a href="{% url  'buy_now' post.id %}?page={{request.path}}">Add To Cart</a>
+                  </div>  
+                </div>
+                
+              </div>
+            </div> 
+          {% comment %} {% endif %} {% endcomment %}
+      {% endfor %}
+      {% endblock list_item %}
+      </div>
+    </div>
+  </section>
+  {% block pagi %}
+{% endblock pagi %}
+  <!-- end furniture section -->
+
+
+
+{% comment %} ------------------------------------------------------------------------------------------------------------------------------------- {% endcomment %}
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- info section -->
+<section class="info_section long_section">
+
+<div class="container">
+  <div class="contact_nav">
+    <a href="">
+      <i class="fa fa-phone" aria-hidden="true"></i>
+      <span>
+        Call : +01 123455678990
+      </span>
+    </a>
+    <a href="">
+      <i class="fa fa-envelope" aria-hidden="true"></i>
+      <span>
+        Email : demo@gmail.com
+      </span>
+    </a>
+    <a href="">
+      <i class="fa fa-map-marker" aria-hidden="true"></i>
+      <span>
+        Location
+      </span>
+    </a>
+  </div>
+
+  <div class="info_top ">
+    <div class="row ">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="info_links">
+          <h4>
+            QUICK LINKS
+          </h4>
+          <div class="info_links_menu">
+            <a class="" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+            <a class="" href="{% url 'about'%}"> About</a>
+            <a class="" href="{% url 'furniture'%}">Furniture</a>
+            <a class="" href="{% url 'blog'%}">Blog</a>
+            <a class="" href="{% url 'contact'%}">Contact Us</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3 mx-auto">
+        <div class="info_post">
+          <h5>
+            INSTAGRAM FEEDS
+          </h5>
+          <div class="post_box">
+            <div class="img-box">
+              <img src="{% static 'furniture/images/f1.png' %}" alt="">
+            </div>
+            <div class="img-box">
+              <img src="{% static 'furniture/images/f2.png' %}" alt="">
+            </div>
+            <div class="img-box">
+              <img src="{% static 'furniture/images/f3.png' %}" alt="">
+            </div>
+            <div class="img-box">
+              <img src="{% static 'furniture/images/f4.png' %}" alt="">
+            </div>
+            <div class="img-box">
+              <img src="{% static 'furniture/images/f5.png' %}" alt="">
+            </div>
+            <div class="img-box">
+              <img src="{% static 'furniture/images/f6.png' %}" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="info_form">
+          <h4>
+            SIGN UP TO OUR NEWSLETTER
+          </h4>
+          <form action="{% url 'subs' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="name" required placeholder="Enter Your Name">
+            <input type="text" name="email" required placeholder="Enter Your Email">
+            <button type="submit"> 
+              Subscribe
+            </button>
+          </form>
+          <div class="social_box">
+            <a href="https://www.facebook.com/dandmfurniture/">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="https://twitter.com/dm_braun">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/dimitris-tagkalidis-943a6163">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.instagram.com/d_m_furniture/">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- end info_section -->
+
+
+<!-- footer section -->
+<footer class="footer_section">
+<div class="container">
+  <p>
+    &copy; <span id="displayYear"></span> All Rights Reserved By
+    <a href="https://html.design/">Free Html Templates</a>
+  </p>
+</div>
+</footer>
+<!-- footer section -->
+
+
+<!-- jQery -->
+<script src="{% static 'furniture/js/jquery-3.4.1.min.js' %}"></script>
+<!-- bootstrap js -->
+<script src="{% static 'furniture/js/bootstrap.js' %}" ></script>
+<!-- custom js -->
+<script src="{% static 'furniture/js/custom.js' %}"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+<!-- End Google Map -->
+
+</body> 
+
+</html>
+
+
+                  {% comment %} <label> {% endcomment %}
+                    {% comment %} <script>
+
+                      var e = document.getElementById('category');
+                      var text = e.options[e.selectedIndex].text;
+                      console.log(text);
+                    </script>
+
+
+
+                    <form method="POST">
+                      {% csrf_token %}
+                      <select name="category" class="paginated" >
+                          <option value="A">All</option>
+                          <option value="S">Sofa</option>
+                          <option value="C">Chair</option>
+                          <option value="T">Table</option>
+                          <option value="B">Bed</option>  
+                          {{value}}
+                        </select> 
+                        {{category}}
+                      </form> {% endcomment %}

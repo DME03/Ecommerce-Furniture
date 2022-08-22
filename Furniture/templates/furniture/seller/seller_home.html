@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="/furniture/images/fevicon.png" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Seller</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'furniture/css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+
+  <!-- font awesome style -->
+  <link href="{% static 'furniture/css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'furniture/css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'furniture/css/responsive.css' %}" rel="stylesheet" />
+
+
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section long_section px-0">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand {{home}}" href="{% url 'home' %}">
+          <span>
+            D&M FURNITURE
+          </span>
+        </a>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+        </button>
+<h5>this is login in </h5>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+            <ul class="navbar-nav  ">
+              <li class="nav-item active">
+                <a class="nav-link {{home}}" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{blog}}" href="{% url 'blog'%}">Add Item</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{about}}" href="{% url 'about'%}">My Listings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {{contact}}" href="{% url 'contact'%}" >Contact Us</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="quote_btn-container">
+            <a href="{% url 'choose_bs' %}">
+              <span>
+                Register/Login
+              </span>
+              <i class="fa fa-user" aria-hidden="true"></i>
+            </a>
+            <form class="form-inline">
+              <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  {% csrf_token %}
+  <section class="contact_section  long_section">
+    <div class="container">
+      <div class="row">
+          <div class="form_container">
+            <div class="heading_container">
+  <!-- slider section -->
+  <div>
+    <section class="slider_section long_section">
+      <div id="customCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">  
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="detail-box">
+  
+                    <h1>
+                      Now Sell Your<br>
+                      Furniture Online
+                    </h1>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
+                    </p>
+                    <div class="btn-box">
+                      <a href="{% url 'contact' %}" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="{% url 'about'%}" class="btn2">
+                        Add a Item
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="img-box">
+                    <img src="{% static 'furniture/images/slider-img.png' %}  " alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="detail-box">
+                    <h1>
+                      Sell Your Furniture<br>
+                      Across Country
+                    </h1>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
+                    </p>
+                    <div class="btn-box">
+                      <a href="{% url 'contact' %}" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="{% url 'about'%}"  class="btn2">
+                        Add a Item
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="img-box">
+                    <img src="{% static 'furniture/images/slider-img.png' %}" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="detail-box">
+                    <h1>
+                      Upgrade Your Furniture Business<br>
+                      With D&M Co.
+                    </h1>
+                    <p>
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
+                    </p>
+                    <div class="btn-box">
+                      <a href="{% url 'contact' %}" class="btn1">
+                        Contact Us
+                      </a>
+                      <a href="{% url 'about'%}" class="btn2">
+                        Add a Item
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="img-box">
+                    <img src="{% static 'furniture/images/slider-img.png' %}" alt="">
+          </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ol class="carousel-indicators">
+          <li data-target="#customCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#customCarousel" data-slide-to="1"></li>
+          <li data-target="#customCarousel" data-slide-to="2"></li>
+        </ol>
+      </div>
+  
+    <!-- end slider section -->
+
+
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+
+    <!-- info section -->
+    <section class="info_section long_section">
+
+        <div class="container">
+          <div class="contact_nav">
+            <a href="">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>
+                Call : +01 123455678990
+              </span>
+            </a>
+            <a href="">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <span>
+                Email : demo@gmail.com
+              </span>
+            </a>
+            <a href="">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span>
+                Location
+              </span>
+            </a>
+          </div>
+    
+      </section>
+      <!-- end info_section -->
+    
+    
+      <!-- footer section -->
+      <footer class="footer_section">
+        <div class="container">
+          <p>
+            &copy; <span id="displayYear"></span> All Rights Reserved By
+            <a href="https://html.design/">Free Html Templates</a>
+          </p>
+        </div>
+      </footer>
+      <!-- footer section -->
+    
+    
+      <!-- jQery -->
+      <script src="{% static 'furniture/js/jquery-3.4.1.min.js' %}"></script>
+      <!-- bootstrap js -->
+      <script src="{% static 'furniture/js/bootstrap.js' %}" ></script>
+      <!-- custom js -->
+      <script src="{% static 'furniture/js/custom.js' %}"></script>
+      <!-- Google Map -->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+      <!-- End Google Map -->
+    
+    </body> 
+    
+    </html>

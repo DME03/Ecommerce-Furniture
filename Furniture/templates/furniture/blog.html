@@ -1,0 +1,77 @@
+{% extends 'furniture/base.html' %}
+{% load static %}
+{% block title %}
+<title>Blog</title>
+{% endblock title %}
+
+{% block content %}
+  <!-- blog section -->
+  <section class="blog_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Latest Blog
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+              <img src="{% static 'furniture/images/b1.jpg' %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Look even slightly believable. If you are
+              </h5>
+              <p>
+                alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+              </p>
+              <a href="https://www.archiexpo.com/architecture-design-manufacturer/traditional-chair-2747.html">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+              <img src="{% static 'furniture/images/b2.jpg' %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Anything embarrassing hidden in the middle
+              </h5>
+              <p>
+                alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+              </p>
+              <a href="https://www.elledecor.com/design-decorate/house-interiors/a28313982/the-ultimate-guide-to-infusing-a-western-chic-vibe-into-your-home/">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+              <img src="{% static 'furniture/images/b3.jpg' %}" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                Molestias magni natus dolores odio commodi. Quaerat!
+              </h5>
+              <p>
+                alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+              </p>
+              <a href="https://www.pinterest.com/westernpassionc/western-dining-tables/">
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end blog section -->
+{% endblock content %}
+

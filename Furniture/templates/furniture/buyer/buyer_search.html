@@ -1,0 +1,55 @@
+{% extends 'furniture/buyer/buyer_furniture.html' %}
+{% load static %}
+{% block list_item %}
+  <section class="furniture_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        {% if result %}
+        <h2>
+          Our Premium Furniture
+        </h2>
+        <p>
+          which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't an
+        </p>
+      </div>
+      <div id="div_main" class="row">
+        {% for  numb in result %}
+            <div id="div_obj" class="col-md-6 col-lg-4">
+            <div id="div_item" class="box">
+              {% comment %} {% if numb.Category == 'A' %} {% endcomment %}
+                <div class="img-box"> 
+                  <img src= "{{numb.furniture_image.url}}" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    {{numb.title}}
+                  </h5>
+                  <div class="price_box">
+                    <h6 class="price_heading">
+                      <span>$</span> {{numb.price}}
+                    </h6>
+                    {% block qty %}
+                      {% for i in all_cart_items %}
+                      {% if i.item_selected.title == numb.title %}
+                        <h6 style="color: green">Qty: {{i.quantity}}</h6>
+                      {% endif %}
+                      {% endfor %}
+                    {% endblock qty %}
+                    <a href="{% url  'buy_now' numb.id %}">Add To Cart</a>
+                    {% comment %} <a href="{% url 'detail' id=numb.id %}">Buy Now</a> {% endcomment %}
+                  </div>  
+                </div>
+              </div>
+            </div> 
+          {% comment %} {% endif %} {% endcomment %}
+      {% endfor %}
+
+      {% else %}
+      <h1>SORRY...NO ITEMS TO SHOW</h1>
+      <br>
+      <h3>We will look into this soon.</h3>
+      {% endif %}
+      {% endblock list_item %}
+
+      {% block pagi %}
+      {% endblock pagi %}

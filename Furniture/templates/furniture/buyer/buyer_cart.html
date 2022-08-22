@@ -1,0 +1,114 @@
+{% extends 'furniture/buyer/buyer_furniture.html' %}
+{% load static %}
+{% block list_item %}
+
+  {% if all_price != 0 %}
+  <h1 style = "background-color: #148F77; color: white; padding: 20px 350px; text-align: center; text-decoration: none; display: inline-block;">
+    YOUR TOTAL BILL IS ${{all_price}}/-
+  </h1>
+  <div class="card-header d-flex">
+    <b><button class="btn btn-success ml-auto" href="{% url 'api_checkout_session' "all_price" %}" id="checkout-button">
+      ===========================&nbsp;&nbsp;&nbsp;  CLICK HERE .. To Checkout To Buy All Items    &nbsp;&nbsp;&nbsp;===========================
+    </button></b>
+  </div>
+  {% endif %}
+
+
+
+
+</div>
+</div>
+<!-- Add JavaScript Here-->
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript">
+// Create an instance of the Stripe object with your publishable API key
+var stripe = Stripe('{{ stripe_publishable_key }}');
+var checkoutButton = document.getElementById('checkout-button');
+console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+
+checkoutButton.addEventListener('click', function () {
+
+fetch("{% url 'api_checkout_session' id="all_price" %}", {
+  method: 'POST',
+  body: JSON.stringify(
+      { email: "abc@gmail.com" }
+  )
+})
+.then(function (response) {
+  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>',response)
+  return response.json();
+  })
+  .then(function (session) {
+      return stripe.redirectToCheckout({ sessionId: session.sessionId });
+  })
+  .then(function (result) {
+      // If `redirectToCheckout` fails due to a browser or network
+      // error, you should display the localized error message to your
+      // customer using `error.message`.
+      if (result.error) {
+          alert(result.error.message);
+      }
+  })
+  .catch(function (error) {
+      console.error('Error:', error);
+  });
+});
+</script>
+
+
+<section class="furniture_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        {% if cart_items %} 
+        <h2>
+          Your Premium Furniture Cart
+        </h2>
+        
+        <p>
+          which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't an
+        </p>
+      </div>
+      <div id="div_main" class="row">
+
+        {% for  item in cart_items %}
+            <div id="div_obj" class="col-md-5 col-lg-4">
+            <div id="div_item" class="box">
+              {% comment %} {% if item.Category == 'A' %} {% endcomment %}
+                <div class="img-box"> 
+                  <img src= "{{item.item_selected.furniture_image.url}}" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5 style="color: #A52A2A">
+                    {{item.item_selected}}
+                  </h5>
+                  <h7 style="color: #008B8B">Quantity:&nbsp;&nbsp;&nbsp; 
+                    <button type="button" id="decrement" style="background-color: #008B8B"> <a style="color: black " href="{% url 'quantity_price_modify_decre' item.id %}"> - </a> </button>
+                    &nbsp;&nbsp;{{item.quantity}}&nbsp;&nbsp;
+                    <button type="button" id="increment" style="background-color: #008B8B"> <a style="color: black " href="{% url 'quantity_price_modify_incre' item.id %}"> + </a> </button></h7>
+                  <hr>
+                  <div class="price_box">
+                    <h6 style="color: #4B0082" class="price_heading">
+                      <span>$</span> {{item.quantity_price}}
+                    </h6>
+                        <a style="color: red" href="{% url 'deletedata' item.id %}">Remove from cart</a>
+                  </div>  
+                </div>
+              </div>
+              <p style = "background-color: #FDE200; color: white; padding: 10px 88px; text-align: center; text-decoration: none; display: inline-block;">
+                <a href="{% url 'detail' id=item.id %}">Checkout To Buy</a></p>
+            </div> 
+
+          {% endfor %}
+
+      {% else %}
+      <h1 style="font-size: 40px" >SORRY...NO ITEMS TO SHOW</h1>
+      <br>
+      <h3 style="font-size: 30px">Click below..... To add some items in your cart.</h3> 
+      <br>
+        <a style="font-size: 50px" href="{% url 'b_furni' %}">Premium Furnitures</a></p>
+      {% endif %}
+
+{% endblock list_item %}
+
+{% block pagi %}
+{% endblock pagi %}
